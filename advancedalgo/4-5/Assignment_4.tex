@@ -70,9 +70,11 @@
 \cleardoublepage
 \setcounter{page}{1}
 
+
 \section*{Problem Statement: Implement Dijkstra algorithm using Fibonacci heap on the given graph.}\label{sec:spanning}
-\section{Dijkstra’s Algorithm }
-\begin{enumerate}
+\section{Related Theory}
+\subsection{Dijkstra’s Algorithm }
+\begin{itemize}
 \item Dijkstra's Algorithm is used to find the shortest route from one vertex, called the source, to all others in a weighted graph, but it can be adapted to focus the distance to one node, called a target.
 \item Dijkstra's algorithm makes use of weights of the edges for finding the path that minimizes the total distance (weight) among the source node and all other nodes. This algorithm is also known as the single-source shortest path algorithm.
 \item Dijkstra’s algorithm is the iterative algorithmic process to provide us with the shortest path from one specific starting node to all other nodes of a graph.
@@ -80,11 +82,11 @@
 \item Generally, Dijkstra’s algorithm works on the principle of relaxation where an approximation of the accurate distance is steadily displaced by more suitable values until the shortest distance is achieved.
 \item Also, the estimated distance to every node is always an overvalue of the true distance and is generally substituted by the least of its previous value with the distance of a recently determined path. 
 \item It uses a priority queue to greedily choose the nearest node that has not been visited yet and executes the relaxation process on all of its edges.
-\end{enumerate}
+\end{itemize}
 
-\section{Fibonacci Heap}
+\subsection{Fibonacci Heap}
 Fibonacci Heap is a collection of trees with min-heap or max-heap property. In Fibonacci Heap, trees can have any shape even all trees can be single nodes (This is unlike Binomial Heap where every tree has to be Binomial Tree). It is used for priority queue operations, consisting of a collection of heap-ordered trees. It has a better amortized running time than many other priority queue data structures including the binary heap and binomial heap.
-\subsection{Properties}
+\subsubsection{Properties}
 \begin{enumerate}
 \item Set of heap-ordered trees. 
 \item Maintain pointer to minimum element.
@@ -93,8 +95,11 @@ Fibonacci Heap is a collection of trees with min-heap or max-heap property. In F
 \end{enumerate}
 
 Below is the diagram of a Fibonacci heap.
+\begin{center}
+    
 
-\begin{tikzpicture}  
+\begin{tikzpicture} 
+
   [scale=1,auto=center, every node/.style={circle,draw=black!100}] % here, node/.style is the style pre-defined, that will be the default layout of all the nodes. You can also create different forms for different nodes.  
     
   \node (a1) at (2,4.5) {17};  
@@ -128,12 +133,11 @@ Below is the diagram of a Fibonacci heap.
   \draw(a11) -- (a14);
   
   \draw[->] (11,5.5) -- (11,4.9);
-  
 \end{tikzpicture}
 \newline
 \textbf{Figure 1: Fibonacci heap}
 \newline
-\newline
+\end{center}
 
 \section{Code Section}
 \subsection{Pseudo Code}
@@ -157,10 +161,9 @@ singleSourceShortest(G,s)
 15.        dist[v]=newLen   
  
  \end{verbatim}
-\subsection{Code Repository}
-Code implementation in C++ language can be found following hyperlink :  \href{https://github.com/mohit83k/iiti_ms_assignments/blob/main/advancedalgo/4-5/dijkstra.cpp}{Assignment 4-5 cpp code}.
+
 \subsection{Explanation}
-\begin{enumerate}
+\begin{itemize}
 \item Create an empty Fibonacci Heap (line 1)
 \item	Assign to every vertex a tentative distance value: set it to zero for our source vertex and to infinity for all other vertices. Set the source vertex as current (line 2 to 5).
 \item	Insert all (v, dist [v]) in Fibonacci heap (line 6 and 7)
@@ -169,10 +172,11 @@ Code implementation in C++ language can be found following hyperlink :  \href{ht
 \item	Once Fibonacci heap is empty, then stop. (Line 8)
 \item	Otherwise, and continue while loop (Line 4 onwards). 
 
-\end{enumerate}
-
+\end{itemize}
+\subsection{Code Repository}
+Code implementation in C++ language can be found following hyperlink :  \href{https://github.com/mohit83k/iiti_ms_assignments/blob/main/advancedalgo/4-5/dijkstra.cpp}{Assignment 4-5 cpp code}.
 \section{Complexity Analysis}
-\begin{enumerate}
+\begin{itemize}
 \item	Normal Dijkstra’s algorithm which is implemented using simple arrays can run in O(n$^{2}$) time
 \item	Dijkstra's algorithm can be implemented more efficiently by storing the graph in the form of adjacency lists and using a Fibonacci heap as a priority queue to implement extracting minimum efficiently. 
 \item	Fibonacci heaps are sometimes referred to as “lazy” data structures because their structure is less strictly managed as they perform operations than in many other data structures. But this “laziness” allows them to have extremely fast amortized time complexities for common heap operations.
@@ -199,6 +203,6 @@ Note, that we can push the same node multiple times here before we get to "visit
 \item	V$^{2}$ is also a total number of edges, so if we let E = V$^{2}$ (as in the official naming), we will T(n) = O (V log V + E)
 
 
-\end{enumerate}
+\end{itemize}
 
 \end{document}
